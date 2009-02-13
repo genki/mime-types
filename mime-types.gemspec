@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
 
   s.require_paths = %w{lib}
 
-  s.files = FileList[*%w(bin/**/* lib/**/* tests/**/* ChangeLog
+  s.files = FileList[*%w(bin/**/* lib/**/* tests/**/* ChangeLog README
                          LICENCE setup.rb Rakefile mime-types.gemspec
                          pre-setup.rb)].to_a.delete_if do |item|
     item.include?("CVS") or item.include?(".svn") or
@@ -26,13 +26,9 @@ Gem::Specification.new do |s|
   s.rubyforge_project = %q(mime-types)
   s.homepage = %q{http://mime-types.rubyforge.org/}
 
-  description = []
-  File.open("README") do |file|
-    file.each do |line|
-      line.chomp!
-      break if line.empty?
-      description << "#{line.gsub(/\[\d\]/, '')}"
-    end
-  end
-  s.description = description[1..-1].join(" ")
+  s.description = <<-"RUBY"
+This library allows for the identification of a file's likely MIME content
+type. This is release 1.15. The identification of MIME content type is based
+on a file's filename extensions.
+  RUBY
 end
