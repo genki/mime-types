@@ -7,14 +7,14 @@
 #
 # $Id$
 #++
-require 'meta_project'
+#require 'meta_project'
 require 'rake/gempackagetask'
-require 'rake/contrib/xforge'
+#require 'rake/contrib/xforge'
 require 'rake/clean'
 
-require 'gmailer'
+#require 'gmailer'
 
-require 'archive/tar/minitar'
+#require 'archive/tar/minitar'
 require 'zlib'
 
 $LOAD_PATH.unshift('lib')
@@ -131,10 +131,10 @@ task :verify_rubyforge do
   raise "RUBYFORGE_PASSWORD environment variable not set!" unless ENV['RUBYFORGE_PASSWORD']
 end
 
-task :verify_gmail do
-  raise "GMAIL_USER environment variable not set!" unless ENV['GMAIL_USER']
-  raise "GMAIL_PASSWORD environment variable not set!" unless ENV['GMAIL_PASSWORD']
-end
+#task :verify_gmail do
+#  raise "GMAIL_USER environment variable not set!" unless ENV['GMAIL_USER']
+#  raise "GMAIL_PASSWORD environment variable not set!" unless ENV['GMAIL_PASSWORD']
+#end
 
 desc "Release files on RubyForge."
 task :release_files => [ :verify_rubyforge, :tar, :gem ] do
@@ -190,7 +190,7 @@ task :publish_news => [ :verify_rubyforge, :tar, :gem ] do
     news.details      = details.join("\n")
   end
 end
-
+=begin
 desc "Post a release announcement via GMail."
 task :email_announcement => [ :verify_gmail ] do
   GMailer.connect(ENV["GMAIL_USER"], ENV["GMAIL_PASSWORD"]) do |gmail|
@@ -199,6 +199,7 @@ task :email_announcement => [ :verify_gmail ] do
                 :body     => File.read("Release-Announcement")
   end
 end
+=end
 
 desc "Release the latest version."
 task :release => [ :verify_rubyforge, :verify_gmail, :release_files,

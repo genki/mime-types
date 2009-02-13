@@ -1,4 +1,3 @@
-require 'rake'
 Gem::Specification.new do |s|
   s.name = %q{mime-types}
   s.version = %q{1.15}
@@ -13,9 +12,9 @@ Gem::Specification.new do |s|
 
   s.require_paths = %w{lib}
 
-  s.files = FileList[*%w(bin/**/* lib/**/* tests/**/* ChangeLog README
+  s.files = Dir.glob(%w(bin/**/* lib/**/* tests/**/* ChangeLog README
                          LICENCE setup.rb Rakefile mime-types.gemspec
-                         pre-setup.rb)].to_a.delete_if do |item|
+                         pre-setup.rb)).to_a.delete_if do |item|
     item.include?("CVS") or item.include?(".svn") or
     item == "install.rb" or item =~ /~$/ or
     item =~ /gem(?:spec)?$/
