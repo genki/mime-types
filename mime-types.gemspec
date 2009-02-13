@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
 
   s.require_paths = %w{lib}
 
-  s.files = FileList[*%w(bin/**/* lib/**/* tests/**/* ChangeLog README
+  s.files = FileList[*%w(bin/**/* lib/**/* tests/**/* ChangeLog
                          LICENCE setup.rb Rakefile mime-types.gemspec
                          pre-setup.rb)].to_a.delete_if do |item|
     item.include?("CVS") or item.include?(".svn") or
